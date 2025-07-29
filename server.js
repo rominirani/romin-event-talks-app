@@ -106,6 +106,15 @@ app.get('/api/categories', (req, res) => {
   res.json(Array.from(categories));
 });
 
+// API endpoint to get unique speakers
+app.get('/api/speakers', (req, res) => {
+  const speakers = new Set();
+  talksData.forEach(talk => {
+    talk.speakers.forEach(speaker => speakers.add(speaker));
+  });
+  res.json(Array.from(speakers));
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
