@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const talksList = document.getElementById('talks-list');
     const categoryFilter = document.getElementById('category-filter');
     const speakerFilter = document.getElementById('speaker-filter');
+    const clearFiltersBtn = document.getElementById('clear-filters-btn');
     let allTalks = [];
     let currentCategory = 'all';
     let currentSpeaker = 'all';
@@ -92,6 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for speaker filter
     speakerFilter.addEventListener('change', (event) => {
         currentSpeaker = event.target.value;
+        filterAndRenderTalks();
+    });
+
+    // Event listener for clear filters button
+    clearFiltersBtn.addEventListener('click', () => {
+        categoryFilter.value = 'all';
+        speakerFilter.value = 'all';
+        currentCategory = 'all';
+        currentSpeaker = 'all';
         filterAndRenderTalks();
     });
 });
